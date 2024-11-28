@@ -16,6 +16,12 @@ Feel free to use this template as a starting point to create your own Noir libra
 
 Add a brief description of the library
 
+## Noir version compatibility
+
+TODO: Update Noir version numbers tested compatible with
+
+This library is compatible with Noir versions >=1.0.0-beta.0 and <=1.0.0-beta.999.
+
 ## Benchmarks
 
 TODO
