@@ -20,7 +20,7 @@ Add a brief description of the library
 
 TODO: Update Noir version numbers tested compatible with
 
-This library is compatible with Noir versions >=1.0.0-beta.0 and <=1.0.0-beta.999.
+This library is tested to work as of Noir version 1.0.0-beta.x.
 
 ## Benchmarks
 
