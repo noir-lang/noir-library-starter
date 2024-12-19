@@ -19,9 +19,9 @@ Add a brief description of the library
 
 ## Noir version compatibility
 
-TODO: Update Noir version numbers tested compatible with
+TODO: Specify compatible Noir version(s)
 
-This library is tested to work as of Noir version 1.0.0-beta.x.
+This library is tested with all stable releases from 1.0.0-beta.x.
 
 ## Benchmarks
 
