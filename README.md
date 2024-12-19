@@ -21,7 +21,7 @@ Add a brief description of the library
 
 TODO: Specify compatible Noir version(s)
 
-This library is tested with all stable releases from Noir v1.0.0-beta.x.
+This library is tested with all Noir stable releases from v1.0.0-beta.x.
 
 ## Benchmarks
 
