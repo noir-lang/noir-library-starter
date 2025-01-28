@@ -8,7 +8,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  MINIMUM_NOIR_VERSION: v0.34.0
+  MINIMUM_NOIR_VERSION: v0.36.0
 
 jobs:
   noir-version-list:
@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Checkout sources
         id: get_versions
-        run: |         
+        run: |
           # gh returns the Noir releases in reverse chronological order so we keep all releases published after the minimum supported version.
           VERSIONS=$(gh release list -R noir-lang/noir --exclude-pre-releases --json tagName -q 'map(.tagName) | index(env.MINIMUM_NOIR_VERSION) as $index | if $index then .[0:$index+1] else [env.MINIMUM_NOIR_VERSION] end')
           echo "versions=$VERSIONS"
@@ -50,6 +50,32 @@ jobs:
       - name: Run Noir tests
         run: nargo test
 
+  rust-equivalence-tests:
+    name: Test for equivalence against Rust impl
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install Nargo
+        uses: noir-lang/noirup@v0.1.3
+        with:
+          toolchain: ${{ env.MINIMUM_NOIR_VERSION }}
+
+      - name: Install Cargo
+        uses: dtolnay/rust-toolchain@1.74.1
+        with:
+          targets: x86_64-unknown-linux-gnu
+      
+      - name: Cache Cargo dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: x86_64-unknown-linux-gnu
+          cache-on-failure: true
+
+      - name: Export and Test Noir Functions
+        run: ./scripts/fuzz-test.sh
+
   format:
     runs-on: ubuntu-latest
     steps:
@@ -73,6 +99,7 @@ jobs:
     if: ${{ always() }}
     needs: 
       - test
+      - rust-equivalence-tests
       - format
 
     steps:

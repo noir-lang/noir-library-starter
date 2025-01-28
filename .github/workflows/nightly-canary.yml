@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   test:
-    name: Test on Nargo ${{matrix.toolchain}}
+    name: Test on Nargo Nightly
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources

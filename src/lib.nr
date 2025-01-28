@@ -13,3 +13,9 @@ fn bench_test(mut x: Field) -> Field {
     }
     x
 }
+
+// This is an example prop test harness.
+#[export]
+fn prop_mul(a: Field, b: Field) -> Field {
+    a * b
+}
