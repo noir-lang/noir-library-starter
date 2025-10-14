@@ -3,12 +3,6 @@ set -eu
 
 export PORT=8095
 
-# Install dependencies if needed
-if [ ! -d "node_modules" ]; then
-    echo "Installing dependencies..."
-    yarn install
-fi
-
 # Build TypeScript first
 echo "Building TypeScript..."
 yarn build
