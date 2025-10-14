@@ -1,6 +1,4 @@
-use super::poseidon2;
-
-/// This calls the oracle server for exampleFunction1
+// This calls the oracle server for exampleFunction1
 #[oracle(exampleFunction1)]
 unconstrained fn example_function1_oracle(input: [Field; 10]) -> Field {}
 
