@@ -4,8 +4,8 @@ Basic template for Noir oracle servers.
 
 ## Quick Start
 
-1. Install: `npm install`
-2. Start: `npm start`
+1. Install: `yarn install`
+2. Start: `yarn start`
 3. Test: `curl http://localhost:8095/health`
 
 ## Usage
