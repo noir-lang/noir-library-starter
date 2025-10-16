@@ -1,0 +1,25 @@
+{
+  "name": "noir-oracle-template",
+  "version": "1.0.0",
+  "description": "Simple Noir oracle server template",
+  "main": "oracle_server.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node oracle_server.ts"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.3.0"
+  },
+  "repository": "https://github.com/noir-lang/noir-library-starter.git",
+  "author": "jialinli <me@jialinli.net>",
+  "license": "MIT"
+}
