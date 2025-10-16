@@ -28,10 +28,11 @@ with the following command.
 
 ```bash
 # execute the following
+./scripts/build-brillig-report.sh
 ./scripts/build-gates-report.sh
 ```
 
-The benchmark will be generated at `./gates_report.json`.
+We use standard github action for benchmarks. For a new repository, we need to create a branch gh-pages first.
 
 ## Installation
 
