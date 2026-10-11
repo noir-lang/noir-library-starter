@@ -8,6 +8,9 @@ This provides out of the box:
 - A canary flagging up compilation failures on nightly releases.
 - A [release-please](https://github.com/googleapis/release-please) setup to ease creating releases for the library.
 - Contributing guidelines specified in [CONTRIBUTING.md](CONTRIBUTING.md)
+- A [SECURITY.md](SECURITY.md) template for vulnerability reporting
+
+**TODO for library authors:** complete [SECURITY.md](SECURITY.md) (contacts, reporting channel, supported versions) before publishing the library.
 
 Feel free to use this template as a starting point to create your own Noir libraries.
 
