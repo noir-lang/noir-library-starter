@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792602657348,
+  "lastUpdate": 1792602658845,
   "repoUrl": "https://github.com/noir-lang/noir-library-starter",
   "entries": {
     "ACIR Opcodes": [
@@ -229,6 +229,40 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/noir-lang/noir-library-starter/commit/536d280cbf6213c92d1437f0864667820dd25db5"
         },
         "date": 1792602383563,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "bench_test.json/main",
+            "value": 116,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "prop_mul.json/main",
+            "value": 17,
+            "unit": "circuit_size"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49558828+AztecBot@users.noreply.github.com",
+            "name": "Aztec Bot",
+            "username": "AztecBot"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "dfe6786988b0d013689833d51ddccc9a789722fe",
+          "message": "chore: add security warning to README and bump minimum Noir version (#27)\n\nCo-authored-by: Tom French <15848336+TomAFrench@users.noreply.github.com>",
+          "timestamp": "2026-10-21T18:10:34+01:00",
+          "tree_id": "2690f276c0c95793a6b749f00871760fffb4da40",
+          "url": "https://github.com/noir-lang/noir-library-starter/commit/dfe6786988b0d013689833d51ddccc9a789722fe"
+        },
+        "date": 1792602658832,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
