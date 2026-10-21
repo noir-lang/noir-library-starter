@@ -13,18 +13,21 @@ jobs:
   test:
     name: Benchmark library
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
 
       - name: Install Nargo
-        uses: noir-lang/noirup@v0.1.4
+        uses: noir-lang/noirup@v0.1.5
         with:
           toolchain: ${{env.MINIMUM_NOIR_VERSION}}
 
       - name: Install bb
         run: |
-          curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/next/barretenberg/bbup/install | bash
+          curl -L https://bbup.aztec.network | bash
           ~/.bb/bbup -nv ${{env.MINIMUM_NOIR_VERSION}}
           sudo apt install libc++-dev
 
@@ -35,6 +38,13 @@ jobs:
         run: ./scripts/build-gates-report.sh
         env:
           BACKEND: /home/runner/.bb/bb
+
+      - name: Compare gates reports
+        id: gates_diff
+        uses: noir-lang/noir-gates-diff@dbe920a8dcc3370af4be4f702ca9cef29317bec1
+        with:
+          report: gates_report.json
+          summaryQuantile: 0.9 # only display the 10% most significant circuit size diffs in the summary (defaults to 20%)
 
       - name: Store ACIR opcode benchmark result
         uses: benchmark-action/github-action-benchmark@v1
@@ -49,7 +59,7 @@ jobs:
           comment-always: ${{ contains( github.event.pull_request.labels.*.name, 'bench-show') }}
           comment-on-alert: true
           alert-threshold: "101%"
-          fail-on-alert: false 
+          fail-on-alert: false
           max-items-in-chart: 50
 
       - name: Store gates benchmark result
@@ -65,9 +75,18 @@ jobs:
           comment-always: ${{ contains( github.event.pull_request.labels.*.name, 'bench-show') }}
           comment-on-alert: true
           alert-threshold: "101%"
-          fail-on-alert: false 
+          fail-on-alert: false
           max-items-in-chart: 50
           skip-fetch-gh-pages: true
+
+      - name: Add gates diff to sticky comment
+        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: gates-diff
+          # delete the comment in case changes no longer impact circuit sizes
+          delete: ${{ !steps.gates_diff.outputs.markdown }}
+          message: ${{ steps.gates_diff.outputs.markdown }}
 
       - name: Delete export files
         run: rm -rf export
@@ -77,7 +96,17 @@ jobs:
 
       - name: Generate brillig report
         run: ./scripts/build-brillig-report.sh
-        
+
+      - name: Compare brillig reports
+        id: brillig_bytecode_diff
+        uses: noir-lang/noir-gates-diff@dbe920a8dcc3370af4be4f702ca9cef29317bec1
+        with:
+          report: brillig_report.json
+          header: |
+            # Changes to Brillig bytecode sizes
+          brillig_report: true
+          summaryQuantile: 0.9 # only display the 10% most significant circuit size diffs in the summary (defaults to 20%)
+
       - name: Store brillig benchmark result
         uses: benchmark-action/github-action-benchmark@v1
         with:
@@ -91,7 +120,15 @@ jobs:
           comment-always: ${{ contains( github.event.pull_request.labels.*.name, 'bench-show') }}
           comment-on-alert: true
           alert-threshold: "101%"
-          fail-on-alert: false 
+          fail-on-alert: false
           max-items-in-chart: 50
           skip-fetch-gh-pages: true
 
+      - name: Add brillig diff to sticky comment
+        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: brillig-diff
+          # delete the comment in case changes no longer impact circuit sizes
+          delete: ${{ !steps.brillig_bytecode_diff.outputs.markdown }}
+          message: ${{ steps.brillig_bytecode_diff.outputs.markdown }}
