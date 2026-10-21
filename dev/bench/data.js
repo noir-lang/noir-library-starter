@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792602381954,
+  "lastUpdate": 1792602383575,
   "repoUrl": "https://github.com/noir-lang/noir-library-starter",
   "entries": {
     "ACIR Opcodes": [
@@ -161,6 +161,40 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/noir-lang/noir-library-starter/commit/dda61251a4d2a299bb88820c4707685e193451e0"
         },
         "date": 1792602353067,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "bench_test.json/main",
+            "value": 116,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "prop_mul.json/main",
+            "value": 17,
+            "unit": "circuit_size"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49558828+AztecBot@users.noreply.github.com",
+            "name": "Aztec Bot",
+            "username": "AztecBot"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "536d280cbf6213c92d1437f0864667820dd25db5",
+          "message": "chore: bump release-please-action to v5 and release with NOIR_RELEASES_TOKEN (#25)",
+          "timestamp": "2026-10-21T18:05:58+01:00",
+          "tree_id": "870c3721183c20fa87a9235a6cb4afcd8ca91cc3",
+          "url": "https://github.com/noir-lang/noir-library-starter/commit/536d280cbf6213c92d1437f0864667820dd25db5"
+        },
+        "date": 1792602383563,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
