@@ -15,11 +15,18 @@ Feel free to use this template as a starting point to create your own Noir libra
 
 # LIBRARY_NAME
 
+> [!WARNING]
+> **This library is experimental software. It has not been fully audited and is not guaranteed to be secure. Expect bugs!**
+>
+> LIBRARY_NAME is provided "as is", without warranty of any kind (see [LICENSE](LICENSE)). Bugs in this library can lead to under-constrained circuits, allowing invalid proofs to be accepted. Do not rely on it to protect real assets or sensitive data without your own independent review.
+>
+> If you find a vulnerability, please **do not** open a public issue. Report it privately via [GitHub's "Report a vulnerability"](https://github.com/noir-lang/LIBRARY_NAME/security/advisories/new) form instead.
+
 Add a brief description of the library
 
 ## Noir version compatibility
 
-This library is tested to work as of Noir version 0.36.0 & 1.0.0-beta.x.
+This library is tested with all releases since 1.0.0-beta.11 as well as nightly. Keep this in sync with `MINIMUM_NOIR_VERSION` in `.github/workflows/test.yml`.
 
 ## Benchmarks
 
