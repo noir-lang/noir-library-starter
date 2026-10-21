@@ -1,4 +1,6 @@
 target
 export
 gates_report.json
+brillig_report.json
+benchmark-*.json
 node_modules
